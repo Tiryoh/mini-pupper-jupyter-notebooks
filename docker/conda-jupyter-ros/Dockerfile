@@ -36,21 +36,49 @@ RUN . /opt/miniconda3/bin/activate && \
     mamba install -y compilers cmake pkg-config make ninja catkin_tools && \
     mamba install -y rosdep && rosdep init && rosdep update
 
+RUN sudo apt-get update && \
+    sudo apt-get install --no-install-recommends -y libgl1-mesa-dev && \
+    rm -rf /var/lib/apt/lists/* && \
+    . /opt/miniconda3/bin/activate && \
+    conda activate robostackenv && \
+    mamba install -y ros-noetic-cv-bridge
+
+# jupyros==0.5.0
 RUN . /opt/miniconda3/bin/activate && \
     conda activate robostackenv && \
     mamba install -y nodejs=14 jupyter-ros \
-          jupyter-amphion ipyvuetify ipympl bqplot ipywidgets "voila>=0.3.5" sidecar
+          jupyter-amphion ipyvuetify ipympl bqplot ipywidgets "voila>=0.3.5" sidecar pillow opencv
 # requires voila>=0.3.5
 # https://github.com/voila-dashboards/voila/issues/1138
 
-# jupyter-ros==0.6.0 is not availabe on conda
-#ENV JUPYROS_VERSION 0.6.0
+## jupyros==0.6.0
 #RUN . /opt/miniconda3/bin/activate && \
 #    conda activate robostackenv && \
-#    pip install jupyros==${JUPYROS_VERSION}
+#    mamba install -y nodejs=14 jupyros \
+#          jupyter-amphion ipyvuetify ipympl bqplot ipywidgets "voila>=0.3.5" sidecar pillow
+
+RUN sed -i -e 's%"python",%"python",\n "env": {"LD_PRELOAD":"/opt/miniconda3/envs/robostackenv/lib/libgomp.so.1"},%g' /opt/miniconda3/envs/robostackenv/share/jupyter/kernels/python3/kernel.json
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip wget sudo curl git \
+    swig libjpeg-dev zlib1g-dev python3-dev unzip python3-pip cmake make && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN echo ". /opt/miniconda3/bin/activate" >> /etc/bash.bashrc && \
     echo "conda activate robostackenv" >> /etc/bash.bashrc
+
+## TensorFlow Lite
+#ENV TFVER=2.8.0
+#ENV PYVER=38
+#ENV ARCH=aarch64
+#
+#RUN python3 -m pip install --no-cache-dir \
+#    https://github.com/PINTO0309/TensorflowLite-bin/releases/download/v${TFVER}/tflite_runtime-${TFVER/-/}-cp${PYVER}-none-linux_${ARCH}.whl
+
+RUN . /opt/miniconda3/bin/activate && \
+    conda activate robostackenv && \
+    python3 -m pip install --no-cache-dir \
+    https://github.com/google-coral/pycoral/releases/download/v1.0.1/tflite_runtime-2.5.0-cp38-cp38-linux_aarch64.whl
 
 ## Additional packages
 #RUN cd /tmp && git clone https://github.com/luxonis/depthai.git && \
