@@ -3,7 +3,7 @@
 # Check if the user belongs to "docker" group
 groups | grep -q docker && SUDO="" || SUDO="sudo"
 
-DOCKER=tiryoh/conda-jupyter-ros:noetic
+DOCKER=ghcr.io/tiryoh/conda-jupyter-ros:noetic
 
 set -x
 
