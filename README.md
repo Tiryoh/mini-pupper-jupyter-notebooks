@@ -14,13 +14,17 @@ NOTE: **This project is under development and this is a draft version**.
 
 * Mini Pupper
     * with Raspberry Pi 4
-        * Ubuntu 20.04 recommended
+        * Ubuntu 20.04 required
+        * ROS Noetic required
+            * `ros-noetic-rosbridge-server`, `ros-noetic-tf2-web-republisher` is required for this project
         * 6GB or more free space in storage required (32GB SD-card recommended)
     * with LD06 LiDAR (optional)
     * with Camera (optional)
         * USB Web Camera and OAK-D-Lite are both OK
 * Laptop
-    * Ubuntu 20.04 recommended
     * Google Chrome required (not tested on other browsers)
-    * 6GB or more free space in storage required
+
+## Architecture
+
+![](./docs/images/architecture.png)
 
