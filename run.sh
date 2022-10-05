@@ -1,5 +1,8 @@
 #!/bin/bash -eu
 
+# Check if the user belongs to "docker" group
+groups | grep -q docker && SUDO="" || SUDO="sudo"
+
 DOCKER=tiryoh/conda-jupyter-ros:noetic
 
 set -x
@@ -12,7 +15,7 @@ set -x
 #       ${DOCKER} \
 #       jupyter lab --notebook-dir=/workspace --ip 0.0.0.0 --no-browser
 
-docker run --rm -it -u $(id -u):$(id -g) \
+$SUDO docker run --rm -it -u $(id -u):$(id -g) \
        -v $(pwd)/notebook:/workspace \
        --network=host \
        ${DOCKER}
