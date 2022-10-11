@@ -104,7 +104,11 @@ cd ~/mini-pupper-jupyter-notebooks
 ./run.sh
 ```
 
-After starting the `run.sh`, access `$IP_ADDRESS:8888` from the laptop via web browser.  
+After starting the `run.sh`, it shows JupyterLab token.
+Access `$IP_ADDRESS:8888` from the laptop via web browser and input the token.  
+For example, if the IP address of the Raspberry Pi is `192.168.10.111`, access `http://192.168.10.111:8888`.
+
+![](https://i.gyazo.com/78565f98223221a3f2370fbc16298faf.png)
 
 https://user-images.githubusercontent.com/3256629/194112549-93bed843-8e7b-44ef-b889-a5450f87e2b0.mp4
 

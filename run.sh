@@ -4,6 +4,11 @@
 groups | grep -q docker && SUDO="" || SUDO="sudo"
 
 DOCKER=ghcr.io/tiryoh/conda-jupyter-ros:noetic
+JUPYTER_TOKEN=$(sed -e "s/://g" /sys/class/net/wlan0/address)
+
+echo "========================================="
+echo JupyterLab Token: $JUPYTER_TOKEN
+echo "========================================="
 
 set -x
 
@@ -19,5 +24,5 @@ $SUDO docker run --rm -it -u $(id -u):$(id -g) \
        -v $(pwd)/notebook:/workspace \
        --network=host \
        ${DOCKER} \
-       bash -c "/jupyter_entrypoint.sh --NotebookApp.token=''"
+       bash -c "/jupyter_entrypoint.sh --ServerApp.token=${JUPYTER_TOKEN}"
 
