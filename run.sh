@@ -18,4 +18,6 @@ set -x
 $SUDO docker run --rm -it -u $(id -u):$(id -g) \
        -v $(pwd)/notebook:/workspace \
        --network=host \
-       ${DOCKER}
+       ${DOCKER} \
+       bash -c "/jupyter_entrypoint.sh --NotebookApp.token=''"
+
