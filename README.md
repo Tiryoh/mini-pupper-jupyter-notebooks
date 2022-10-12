@@ -26,15 +26,98 @@ NOTE: **This project is under development and this is a draft version**.
 * Laptop
     * Google Chrome required (not tested on other browsers)
 
+NOTE: ROS setup for laptop is not required for this tutorial
+
 ## Architecture
 
 ![](./docs/images/architecture.png)
 
 ## Installation
 
+### 1. Install Ubuntu 20.04 64bit version  
 
+`ubuntu-20.04.5-preinstalled-server-arm64+raspi.img.xz` is recommended.
+
+https://cdimage.ubuntu.com/releases/20.04/release/
+
+### 2. Install Mini Pupper base package
+
+Follow the official document.  
+https://github.com/mangdangroboticsclub/mini_pupper_bsp
+
+### 3. Install ROS packages
+
+Install ROS.
+
+```
+git clone https://github.com/Tiryoh/ros_setup_scripts_ubuntu.git
+cd ros_setup_scripts_ubuntu
+./ros-noetic-ros-base.sh
+```
+
+Install ROS package for this project.
+
+```
+sudo apt install ros-noetic-rosbridge-server ros-noetic-tf2-web-republisher
+```
+
+Install ROS packages for Mini Pupper.  
+Follow mini_pupper_ros official document.  
+https://github.com/mangdangroboticsclub/mini_pupper_ros
+
+__NOTE: ROS setup for laptop is not required for this project.__
+
+### 4. Install docker
+
+```sh
+sudo apt install docker.io
+sudo usermod -aG docker $USER
+```
+
+If you need the latest docker, follow the official document.  
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
+
+### 5. Prepare this project
+
+Download this project with `git clone` command.
+
+```sh
+cd ~/dev/
+git clone https://github.com/Tiryoh/mini-pupper-jupyter-notebooks.git
+```
+
+### 6. Prepare docker image
+
+There are 2 ways to prepare docker image.  
+Using pre-built image is easier.
+
+A. Download the pre-built image (recommended)
+
+```sh
+docker pull ghcr.io/tiryoh/conda-jupyter-ros:noetic
+```
+
+B. Build docker image (optional)
+
+```sh
+cd ~/dev/mini-pupper-jupyter-notebooks/docker/conda-jupyter-ros
+./build.sh
+```
 
 ## Usage
+
+Login Mini Pupper's Raspberry Pi via SSH and run `run.sh`.  
+
+```sh
+cd ~/dev/mini-pupper-jupyter-notebooks
+./run.sh
+```
+
+After starting the `run.sh`, it shows JupyterLab token.
+Access `$IP_ADDRESS:8888` from the laptop via web browser and input the token.  
+For example, if the IP address of the Raspberry Pi is `192.168.10.111`, access `http://192.168.10.111:8888`.
+
+![](https://i.gyazo.com/78565f98223221a3f2370fbc16298faf.png)
 
 https://user-images.githubusercontent.com/3256629/194112549-93bed843-8e7b-44ef-b889-a5450f87e2b0.mp4
 
