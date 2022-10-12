@@ -77,21 +77,30 @@ sudo usermod -aG docker $USER
 If you need the latest docker, follow the official document.  
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
 
-### 5. Prepare docker image
+### 5. Prepare this project
+
+Download this project with `git clone` command.
+
+```sh
+cd ~/dev/
+git clone https://github.com/Tiryoh/mini-pupper-jupyter-notebooks.git
+```
+
+### 6. Prepare docker image
 
 There are 2 ways to prepare docker image.  
 Using pre-built image is easier.
 
 A. Download the pre-built image (recommended)
 
-```
+```sh
 docker pull ghcr.io/tiryoh/conda-jupyter-ros:noetic
 ```
 
 B. Build docker image (optional)
 
-```
-cd docker/conda-jupyter-ros
+```sh
+cd ~/dev/mini-pupper-jupyter-notebooks/docker/conda-jupyter-ros
 ./build.sh
 ```
 
@@ -99,8 +108,8 @@ cd docker/conda-jupyter-ros
 
 Login Mini Pupper's Raspberry Pi via SSH and run `run.sh`.  
 
-```
-cd ~/mini-pupper-jupyter-notebooks
+```sh
+cd ~/dev/mini-pupper-jupyter-notebooks
 ./run.sh
 ```
 
