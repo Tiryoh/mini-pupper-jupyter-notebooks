@@ -25,6 +25,7 @@ NOTE: **This project is under development and this is a draft version**.
         * USB Web Camera and OAK-D-Lite are both OK
 * Laptop
     * Google Chrome required (not tested on other browsers)
+    * SSH Client
 
 NOTE: ROS setup for laptop is not required for this tutorial
 
@@ -115,7 +116,9 @@ cd ~/dev/mini-pupper-jupyter-notebooks
 
 After starting the `run.sh`, it shows JupyterLab token.
 Access `$IP_ADDRESS:8888` from the laptop via web browser and input the token.  
-For example, if the IP address of the Raspberry Pi is `192.168.10.111`, access `http://192.168.10.111:8888`.
+For example, if the IP address of the Raspberry Pi is `192.168.10.12`, access `http://192.168.10.12:8888`.
+
+![](https://i.gyazo.com/4ab7491cef06b631e1fa02c110cb96ac.jpg)
 
 ![](https://i.gyazo.com/78565f98223221a3f2370fbc16298faf.png)
 
