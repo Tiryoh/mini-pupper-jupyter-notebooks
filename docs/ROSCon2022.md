@@ -43,3 +43,6 @@ cd ~/dev/mini-pupper-jupyter-notebooks
 cd ~/dev/mini-pupper-jupyter-notebooks && roslaunch ROS/camera.launch
 ```
 
+## Links
+
+[Object Detection Targes](../notebook/images/README.md)
