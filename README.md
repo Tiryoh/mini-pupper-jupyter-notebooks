@@ -5,6 +5,8 @@ Jupyter Notebooks for [Mini Pupper](https://minipupperdocs.readthedocs.io/en/lat
 * Jupyter Notebooks to control Mini Pupper
 * Dockerfiles to launch Jupyter Noteobooks with [RoboStack/jupyter-ros](https://github.com/RoboStack/jupyter-ros)
 
+ROSCon2022 Mini Pupper workshop slide: https://docs.google.com/presentation/d/1blwnOdjrrUGisGahi4SSabyXjQmaVHE_ntHNChsot48/edit?usp=sharing
+
 | LiDAR Scan Visualization | Object Following |
 | -- | -- |
 | ![](https://i.gyazo.com/46232ce2f059196330ac21fcddf8d4ce.gif) | ![](https://i.gyazo.com/867b282ed88d6befc760478e494ba4ac.gif) |
